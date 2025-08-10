@@ -7,8 +7,13 @@ package TELAS;
 import DAO.Cons_Servico;
 import TELAS.TelaLista;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.RenderingHints;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,6 +24,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.border.AbstractBorder;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -43,39 +49,33 @@ public class TelaAdicionar extends javax.swing.JFrame {
         setTitle("Tela Adicionar Pedido");
 
         jtfAddNomeCliente.setOpaque(false);
-        jtfAddNomeCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddNomeCliente.setBorder(new RoundedBorder(20));
         jtfAddNomeCliente.setForeground(java.awt.Color.BLACK);
-        jtfAddNomeCliente.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddNomeCliente.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddDescricao.setOpaque(false);
-        jtfAddDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddDescricao.setBorder(new RoundedBorder(20));
         jtfAddDescricao.setForeground(java.awt.Color.BLACK);
-        jtfAddDescricao.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddDescricao.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddModeloVei.setOpaque(false);
-        jtfAddModeloVei.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddModeloVei.setBorder(new RoundedBorder(20));
         jtfAddModeloVei.setForeground(java.awt.Color.BLACK);
-        jtfAddModeloVei.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddModeloVei.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddPlaca.setOpaque(false);
-        jtfAddPlaca.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddPlaca.setBorder(new RoundedBorder(20));
         jtfAddPlaca.setForeground(java.awt.Color.BLACK);
-        jtfAddPlaca.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddPlaca.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddValor.setOpaque(false);
-        jtfAddValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddValor.setBorder(new RoundedBorder(20));
         jtfAddValor.setForeground(java.awt.Color.BLACK);
-        jtfAddValor.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddValor.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddTempoEst.setOpaque(false);
-        jtfAddTempoEst.setBorder(javax.swing.BorderFactory.createEmptyBorder());
+        jtfAddTempoEst.setBorder(new RoundedBorder(20));
         jtfAddTempoEst.setForeground(java.awt.Color.BLACK);
-        jtfAddTempoEst.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
         jtfAddTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jbtAdicionarPedido.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
@@ -101,7 +101,34 @@ public class TelaAdicionar extends javax.swing.JFrame {
         }
 
     }
+    class RoundedBorder extends AbstractBorder {
 
+        private int radius;
+
+        public RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.GRAY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+            g2.dispose();
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(10, 10, 10, 10); // Espaçamento interno
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c, Insets insets) {
+            insets.set(10, 10, 10, 10);
+            return insets;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -145,7 +172,8 @@ public class TelaAdicionar extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(77, 77, 77)
@@ -160,30 +188,27 @@ public class TelaAdicionar extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                                .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jtfAddPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfAddValor, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfAddTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addGap(162, 162, 162)
+                .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jtfAddPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfAddValor, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(jtfAddTempoEst))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();

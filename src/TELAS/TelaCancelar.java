@@ -126,7 +126,7 @@ public class TelaCancelar extends javax.swing.JFrame {
             }
         });
 
-        jbtConfirmarCancelamento.setText("Confirmar Cancelamento");
+        jbtConfirmarCancelamento.setText("Cancelar Serviço");
         jbtConfirmarCancelamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtConfirmarCancelamentoActionPerformed(evt);

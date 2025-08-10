@@ -55,7 +55,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbtConfirmarCancelamento">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Confirmar Cancelamento"/>
+        <Property name="text" type="java.lang.String" value="Cancelar Servi&#xe7;o"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtConfirmarCancelamentoActionPerformed"/>
