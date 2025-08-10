@@ -25,6 +25,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.LineBorder;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class TelaLogin extends javax.swing.JFrame {
 
@@ -34,7 +35,7 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telalogin");
         initComponents();
-        
+
         // Garantir tamanho antes de escalar
         setSize(600, 750); // ou setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);//Centralizar na tela
@@ -58,16 +59,15 @@ public class TelaLogin extends javax.swing.JFrame {
         jbtLogIn.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
         jbtLogIn.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtLogIn.setBackground(new Color(20, 40, 60));
-        
+
         jbtRegistrar.setContentAreaFilled(true); // tira o fundo branco
         jbtRegistrar.setBorderPainted(false);     // tira a borda
         jbtRegistrar.setOpaque(false);            // permite transparência
         jbtRegistrar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
         jbtRegistrar.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtRegistrar.setBackground(new Color(20, 40, 60));
-        
-        
 
+       
         if (imagemOriginal != null) {
             // Escala a imagem de acordo com a tela
             Image imagem = imagemOriginal.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
@@ -81,34 +81,35 @@ public class TelaLogin extends javax.swing.JFrame {
             System.out.println("Imagem de fundo não encontrada.");
         }
     }
-    
+
     class RoundedBorder extends AbstractBorder {
-    private int radius;
 
-    public RoundedBorder(int radius) {
-        this.radius = radius;
-    }
+        private int radius;
 
-    @Override
-    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(Color.GRAY);
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
-        g2.dispose();
-    }
+        public RoundedBorder(int radius) {
+            this.radius = radius;
+        }
 
-    @Override
-    public Insets getBorderInsets(Component c) {
-        return new Insets(10, 10, 10, 10); // Espaçamento interno
-    }
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.GRAY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+            g2.dispose();
+        }
 
-    @Override
-    public Insets getBorderInsets(Component c, Insets insets) {
-        insets.set(10, 10, 10, 10);
-        return insets;
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(10, 10, 10, 10); // Espaçamento interno
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c, Insets insets) {
+            insets.set(10, 10, 10, 10);
+            return insets;
+        }
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,6 +124,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jbtLogIn = new javax.swing.JButton();
         jpfPassword = new javax.swing.JPasswordField();
         jtfUsername = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,26 +159,32 @@ public class TelaLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(148, 148, 148)
-                            .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(jbtRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(63, 63, 63)
+                .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jbtRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpfPassword)
+                    .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(418, Short.MAX_VALUE)
                 .addComponent(jtfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jpfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtLogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,32 +197,36 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jbtLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtLogInActionPerformed
         String usuario = jtfUsername.getText();
-        String senha = new String(jpfPassword.getPassword());
+        String senhaDigitada = new String(jpfPassword.getPassword());
 
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_autopaint", "root", "");
 
-            String sql = "SELECT * FROM usuarios WHERE nome = ? AND senha = ?";
+            // Buscar apenas pelo nome
+            String sql = "SELECT senha FROM usuarios WHERE nome = ?";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, usuario);
-            stmt.setString(2, senha);
 
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                TelaLista listas = new TelaLista();
-                listas.carregarPedidos();
-                listas.setVisible(true);
+                String senhaHash = rs.getString("senha");
 
-                this.dispose();
-
+                // Verificar se a senha digitada bate com o hash
+                if (BCrypt.checkpw(senhaDigitada, senhaHash)) {
+                    TelaLista listas = new TelaLista();
+                    listas.carregarPedidos();
+                    listas.setVisible(true);
+                    this.dispose();
+                } else {
+                    TelaAvisoUsu aviso = new TelaAvisoUsu();
+                    aviso.setVisible(true);
+                }
             } else {
                 TelaAvisoUsu aviso = new TelaAvisoUsu();
                 aviso.setVisible(true);
-
             }
 
-            // Fechar recursos
             rs.close();
             stmt.close();
             con.close();
@@ -225,7 +237,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtLogInActionPerformed
 
     private void jbtRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtRegistrarActionPerformed
-        // TODO add your handling code here:
+        TelaRegistrar registro = new TelaRegistrar();
+        registro.setVisible(true);
     }//GEN-LAST:event_jbtRegistrarActionPerformed
 
     private void jpfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpfPasswordActionPerformed
@@ -272,6 +285,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jbtLogIn;
     private javax.swing.JButton jbtRegistrar;
     private javax.swing.JPasswordField jpfPassword;

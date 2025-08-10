@@ -23,7 +23,9 @@ public class ImagemTelas {
             case "telaaddsucesso":
                 return new ImageIcon(ImagemTelas.class.getResource("/imagens/TelaAddSucesso.png"));
             case "telaerroadd":
-                return new ImageIcon(ImagemTelas.class.getResource("/imagens/TelaAddErro.png"));                
+                return new ImageIcon(ImagemTelas.class.getResource("/imagens/TelaAddErro.png"));   
+            case "telaregistro":
+                return new ImageIcon(ImagemTelas.class.getResource("/imagens/TelaRegistro.png")); 
             default:
                 return null;
         }
