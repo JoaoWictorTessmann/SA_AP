@@ -6,8 +6,13 @@ package TELAS;
 
 import TELAS.TelaLista;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -19,6 +24,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.AbstractBorder;
 
 /**
  *
@@ -38,16 +44,17 @@ public class TelaModificar extends javax.swing.JFrame {
         bloquearCamposModificacao();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
-
+        setTitle("Tela Modificar Pedido");
         // Garantir tamanho antes de escalar
         setSize(500, 600); // ou setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
-
+        
         jtfModSolicitarID.setOpaque(false);
         jtfModSolicitarID.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModSolicitarID.setForeground(java.awt.Color.WHITE);
-        jtfModSolicitarID.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModSolicitarID.setBorder(new RoundedBorder(20));
+        jtfModSolicitarID.setBackground(Color.BLACK);
         jtfModSolicitarID.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jbtModConfirmarID.setContentAreaFilled(true); // tira o fundo branco
@@ -60,37 +67,43 @@ public class TelaModificar extends javax.swing.JFrame {
         jtfModNomeCliente.setOpaque(false);
         jtfModNomeCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModNomeCliente.setForeground(java.awt.Color.WHITE);
-        jtfModNomeCliente.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModNomeCliente.setBorder(new RoundedBorder(20));
+        jtfModNomeCliente.setBackground(Color.BLACK);
         jtfModNomeCliente.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jtfModDescricao.setOpaque(false);
         jtfModDescricao.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModDescricao.setForeground(java.awt.Color.WHITE);
-        jtfModDescricao.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModDescricao.setBorder(new RoundedBorder(20));
+        jtfModDescricao.setBackground(Color.BLACK);
         jtfModDescricao.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jtfModModeloVei.setOpaque(false);
         jtfModModeloVei.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModModeloVei.setForeground(java.awt.Color.WHITE);
-        jtfModModeloVei.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModModeloVei.setBorder(new RoundedBorder(20));
+        jtfModModeloVei.setBackground(Color.BLACK);
         jtfModModeloVei.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jtfModPlaca.setOpaque(false);
         jtfModPlaca.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModPlaca.setForeground(java.awt.Color.WHITE);
-        jtfModPlaca.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModPlaca.setBorder(new RoundedBorder(20));
+        jtfModPlaca.setBackground(Color.BLACK);
         jtfModPlaca.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jtfModValor.setOpaque(false);
         jtfModValor.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModValor.setForeground(java.awt.Color.WHITE);
-        jtfModValor.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModValor.setBorder(new RoundedBorder(20));
+        jtfModValor.setBackground(Color.BLACK);
         jtfModValor.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jtfModTempoEst.setOpaque(false);
         jtfModTempoEst.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfModTempoEst.setForeground(java.awt.Color.WHITE);
-        jtfModTempoEst.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfModTempoEst.setBorder(new RoundedBorder(20));
+        jtfModTempoEst.setBackground(Color.BLACK);
         jtfModTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 18));
 
         jbtModificarPedido.setContentAreaFilled(true); // tira o fundo branco
@@ -115,24 +128,64 @@ public class TelaModificar extends javax.swing.JFrame {
             System.out.println("Imagem de fundo não encontrada.");
         }
     }
+    class RoundedBorder extends AbstractBorder {
 
+        private int radius;
+
+        public RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.GRAY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+            g2.dispose();
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(10, 10, 10, 10); // Espaçamento interno
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c, Insets insets) {
+            insets.set(10, 10, 10, 10);
+            return insets;
+        }
+    }
+    
     private void habilitarCamposModificacao() {
-        jtfModNomeCliente.setEnabled(true);
-        jtfModDescricao.setEnabled(true);
-        jtfModModeloVei.setEnabled(true);
-        jtfModPlaca.setEnabled(true);
-        jtfModValor.setEnabled(true);
-        jtfModTempoEst.setEnabled(true);
-        jbtModificarPedido.setEnabled(true); // botão de modificar
+        jtfModNomeCliente.setEditable(true);
+        jtfModNomeCliente.setBackground(Color.BLACK);
+        jtfModDescricao.setEditable(true);
+        jtfModDescricao.setBackground(Color.BLACK);
+        jtfModModeloVei.setEditable(true);
+        jtfModModeloVei.setBackground(Color.BLACK);
+        jtfModPlaca.setEditable(true);
+        jtfModPlaca.setBackground(Color.BLACK);
+        jtfModValor.setEditable(true);
+        jtfModValor.setBackground(Color.BLACK);
+        jtfModTempoEst.setEditable(true);
+        jtfModTempoEst.setBackground(Color.BLACK);
+        jbtModificarPedido.setEnabled(true);
     }
 
     private void bloquearCamposModificacao() {
-        jtfModNomeCliente.setEnabled(false);
-        jtfModDescricao.setEnabled(false);
-        jtfModModeloVei.setEnabled(false);
-        jtfModPlaca.setEnabled(false);
-        jtfModValor.setEnabled(false);
-        jtfModTempoEst.setEnabled(false);
+        jtfModNomeCliente.setEditable(false);
+        jtfModNomeCliente.setBackground(Color.GRAY);
+        jtfModDescricao.setEditable(false);
+        jtfModDescricao.setBackground(Color.GRAY);
+        jtfModModeloVei.setEditable(false);
+        jtfModModeloVei.setBackground(Color.GRAY);
+        jtfModPlaca.setEditable(false);
+        jtfModPlaca.setBackground(Color.GRAY);
+        jtfModValor.setEditable(false);
+        jtfModValor.setBackground(Color.GRAY);
+        jtfModTempoEst.setEditable(false);
+        jtfModTempoEst.setBackground(Color.GRAY);
         jbtModificarPedido.setEnabled(false);
     }
 
@@ -170,6 +223,12 @@ public class TelaModificar extends javax.swing.JFrame {
             }
         });
 
+        jtfModNomeCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfModNomeClienteActionPerformed(evt);
+            }
+        });
+
         jbtModConfirmarID.setText("Confirmar ID");
         jbtModConfirmarID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,29 +249,24 @@ public class TelaModificar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(72, Short.MAX_VALUE)
                         .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfModValor)
+                            .addComponent(jtfModModeloVei, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(jtfModSolicitarID)
+                            .addComponent(jtfModNomeCliente))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtfModValor)
-                                .addGap(29, 29, 29)
-                                .addComponent(jtfModTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jtfModModeloVei, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                                    .addComponent(jtfModSolicitarID)
-                                    .addComponent(jtfModNomeCliente))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jtfModPlaca))
-                                        .addGap(9, 9, 9)))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfModPlaca)
+                                    .addComponent(jtfModTempoEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(9, 9, 9)))))
                 .addGap(183, 183, 183))
         );
         layout.setVerticalGroup(
@@ -220,23 +274,23 @@ public class TelaModificar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(129, 129, 129)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfModSolicitarID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfModSolicitarID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101)
+                .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfModNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfModDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfModModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfModPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfModNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfModDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfModModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfModPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfModTempoEst, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jtfModValor))
+                    .addComponent(jtfModValor, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jtfModTempoEst))
                 .addGap(18, 18, 18)
                 .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(154, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
@@ -357,7 +411,7 @@ public class TelaModificar extends javax.swing.JFrame {
                 String valorLimpo = textoValor.replace("R$", "").replace(".", "").replace(",", ".").trim();
                 valor = Double.parseDouble(valorLimpo);
             } catch (NumberFormatException e) {
-                new TelaErroAdd("Valor inválido. Use o formato R$ 100,00.").setVisible(true);
+                new TelaErroAdd("Valor inválido. Digite o numero inteiro.").setVisible(true);
                 return;
             }
 
@@ -394,6 +448,10 @@ public class TelaModificar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jbtModificarPedidoActionPerformed
+
+    private void jtfModNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfModNomeClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfModNomeClienteActionPerformed
 
     /**
      * @param args the command line arguments

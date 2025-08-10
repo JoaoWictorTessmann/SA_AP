@@ -5,8 +5,13 @@
 package TELAS;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.AbstractBorder;
 
 /**
  *
@@ -40,11 +46,12 @@ public class TelaFinalizar extends javax.swing.JFrame {
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
+        setTitle("Tela Finalizar Pedido");
 
         jtfIdPedidoFim.setOpaque(false);
         jtfIdPedidoFim.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         jtfIdPedidoFim.setForeground(java.awt.Color.BLACK);
-        jtfIdPedidoFim.setBackground(new Color(0, 0, 0, 0)); // Totalmente transparente
+        jtfIdPedidoFim.setBorder(new RoundedBorder(20));
         jtfIdPedidoFim.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 22));
 
         jbtFinalizarServico.setContentAreaFilled(true); // tira o fundo branco
@@ -53,7 +60,7 @@ public class TelaFinalizar extends javax.swing.JFrame {
         jbtFinalizarServico.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
         jbtFinalizarServico.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtFinalizarServico.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
-        
+
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telafinalizar");
 
         if (imagemOriginal != null) {
@@ -69,6 +76,35 @@ public class TelaFinalizar extends javax.swing.JFrame {
             System.out.println("Imagem de fundo não encontrada.");
         }
 
+    }
+
+    class RoundedBorder extends AbstractBorder {
+
+        private int radius;
+
+        public RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.GRAY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+            g2.dispose();
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(10, 10, 10, 10); // Espaçamento interno
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c, Insets insets) {
+            insets.set(10, 10, 10, 10);
+            return insets;
+        }
     }
 
     /**
@@ -173,7 +209,7 @@ public class TelaFinalizar extends javax.swing.JFrame {
             new TelaErroAdd("Digite um número válido para o ID.").setVisible(true);
         } catch (SQLException e) {
             new TelaErroAdd("Erro ao finalizar pedido: " + e.getMessage()).setVisible(true);
-        }       
+        }
     }//GEN-LAST:event_jbtFinalizarServicoActionPerformed
 
     /**

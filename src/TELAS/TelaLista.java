@@ -36,6 +36,7 @@ public class TelaLista extends javax.swing.JFrame {
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
+        setTitle("Tela Lista de Pedidos");
 
         jbtAdicionar.setContentAreaFilled(true); // tira o fundo branco
         jbtAdicionar.setBorderPainted(false);     // tira a borda

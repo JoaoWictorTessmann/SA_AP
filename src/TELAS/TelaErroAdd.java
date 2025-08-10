@@ -27,6 +27,7 @@ public class TelaErroAdd extends javax.swing.JFrame {
         setLayout(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setTitle("Tela Aviso de Erro");
 
         // Mensagem dinâmica no JLabel
         jlbTextoErro.setText("<html>" + mensagem + "</html>");

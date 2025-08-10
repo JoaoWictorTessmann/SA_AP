@@ -40,6 +40,7 @@ public class TelaAdicionar extends javax.swing.JFrame {
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
+        setTitle("Tela Adicionar Pedido");
 
         jtfAddNomeCliente.setOpaque(false);
         jtfAddNomeCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder());

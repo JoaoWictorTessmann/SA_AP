@@ -29,6 +29,7 @@ public class TelaAddSucesso extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
+        setTitle("Tela Aviso Adicionado com Sucesso");
         
         // Mensagem dinâmica no JLabel
         jlbTextoAddSucesso.setText("<html>" + mensagem + "</html>");

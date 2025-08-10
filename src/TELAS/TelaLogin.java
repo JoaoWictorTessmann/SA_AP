@@ -67,7 +67,6 @@ public class TelaLogin extends javax.swing.JFrame {
         jbtRegistrar.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtRegistrar.setBackground(new Color(20, 40, 60));
 
-       
         if (imagemOriginal != null) {
             // Escala a imagem de acordo com a tela
             Image imagem = imagemOriginal.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
@@ -222,9 +221,6 @@ public class TelaLogin extends javax.swing.JFrame {
                     TelaAvisoUsu aviso = new TelaAvisoUsu();
                     aviso.setVisible(true);
                 }
-            } else {
-                TelaAvisoUsu aviso = new TelaAvisoUsu();
-                aviso.setVisible(true);
             }
 
             rs.close();

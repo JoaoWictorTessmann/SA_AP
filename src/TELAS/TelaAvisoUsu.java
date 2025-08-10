@@ -26,6 +26,7 @@ public class TelaAvisoUsu extends javax.swing.JFrame {
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
+        setTitle("Tela Aviso Usuario");
         
         jbtOkAviso.setContentAreaFilled(true); // tira o fundo branco
         jbtOkAviso.setBorderPainted(false);     // tira a borda

@@ -54,7 +54,20 @@ public class TelaRegistrar extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Tela de Registro");
         jcbTipo.setModel(new DefaultComboBoxModel<>(new String[]{"Administrador", "Colaborador"}));
-
+        jtfNomeUsu.setBorder(new RoundedBorder(20));
+        jtfNomeUsu.setFont(new Font("SansSerif", Font.BOLD, 25));
+        jtfEmail.setBorder(new RoundedBorder(20));
+        jtfEmail.setFont(new Font("SansSerif", Font.BOLD, 25));
+        jpfSenhaRegistro.setBorder(new RoundedBorder(20));
+        jpfSenhaRegistro.setFont(new Font("SansSerif", Font.BOLD, 25));
+        
+        jbtSalvar.setContentAreaFilled(true); // tira o fundo branco
+        jbtSalvar.setBorderPainted(false);     // tira a borda
+        jbtSalvar.setOpaque(false);            // permite transparência
+        jbtSalvar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
+        jbtSalvar.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtSalvar.setBackground(new Color(20, 40, 60));
+        
         if (imagemOriginal != null) {
             // Escala a imagem de acordo com a tela
             Image imagem = imagemOriginal.getImage().getScaledInstance(getWidth(), getHeight(), Image.SCALE_SMOOTH);
@@ -68,7 +81,35 @@ public class TelaRegistrar extends javax.swing.JFrame {
             System.out.println("Imagem de fundo não encontrada.");
         }
     }
+    
+    class RoundedBorder extends AbstractBorder {
 
+        private int radius;
+
+        public RoundedBorder(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2 = (Graphics2D) g.create();
+            g2.setColor(Color.GRAY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
+            g2.dispose();
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(10, 10, 10, 10); // Espaçamento interno
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c, Insets insets) {
+            insets.set(10, 10, 10, 10);
+            return insets;
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,7 +119,7 @@ public class TelaRegistrar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jbtSalvar = new javax.swing.JButton();
         jtfNomeUsu = new javax.swing.JTextField();
         jtfEmail = new javax.swing.JTextField();
         jpfSenhaRegistro = new javax.swing.JPasswordField();
@@ -86,10 +127,10 @@ public class TelaRegistrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbtSalvar.setText("Salvar");
+        jbtSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbtSalvarActionPerformed(evt);
             }
         });
 
@@ -112,7 +153,7 @@ public class TelaRegistrar extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(160, 160, 160)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(172, 172, 172)
                             .addComponent(jtfNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -127,10 +168,10 @@ public class TelaRegistrar extends javax.swing.JFrame {
                 .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jpfSenhaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53))
         );
 
@@ -141,14 +182,14 @@ public class TelaRegistrar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcbTipoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtSalvarActionPerformed
         String nome = jtfNomeUsu.getText();
         String email = jtfEmail.getText();
         String senha = new String(jpfSenhaRegistro.getPassword());
         String tipo = jcbTipo.getSelectedItem().toString();
 
         if (nome.isEmpty() || email.isEmpty() || senha.isEmpty() || tipo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            new TelaErroAdd("Preencha todos os campos!").setVisible(true);
             return;
         }
 
@@ -165,13 +206,15 @@ public class TelaRegistrar extends javax.swing.JFrame {
             stmt.setString(4, tipo);
 
             stmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuário registrado com sucesso!");
+            this.dispose();
+            TelaAddSucesso sucesso = new TelaAddSucesso("Usuario Cadastrado com Sucesso!");
+            sucesso.setVisible(true);
             con.close();
-
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao registrar: " + e.getMessage());
+            new TelaErroAdd("Erro ao registrar: " + e.getMessage()).setVisible(true);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtSalvarActionPerformed
 
     
 
@@ -215,7 +258,7 @@ public static String criptografarSenha(String senha) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jbtSalvar;
     private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JPasswordField jpfSenhaRegistro;
     private javax.swing.JTextField jtfEmail;
