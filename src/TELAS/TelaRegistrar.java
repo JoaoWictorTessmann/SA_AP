@@ -53,6 +53,12 @@ public class TelaRegistrar extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setTitle("Tela de Registro");
+        jlbTitulo.setFont(new Font("SansSerif", Font.BOLD, 40));
+        jlbNome.setFont(new Font("SansSerif", Font.BOLD, 20));
+        jlbEmail.setFont(new Font("SansSerif", Font.BOLD, 20));
+        jlbSenha.setFont(new Font("SansSerif", Font.BOLD, 20));
+        jlbTipo.setFont(new Font("SansSerif", Font.BOLD, 15));
+        
         jcbTipo.setModel(new DefaultComboBoxModel<>(new String[]{"Administrador", "Colaborador"}));
         jtfNomeUsu.setBorder(new RoundedBorder(20));
         jtfNomeUsu.setFont(new Font("SansSerif", Font.BOLD, 25));
@@ -67,6 +73,13 @@ public class TelaRegistrar extends javax.swing.JFrame {
         jbtSalvar.setFont(new Font("SansSerif", Font.BOLD, 40)); // ou outro tamanho
         jbtSalvar.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtSalvar.setBackground(new Color(20, 40, 60));
+        
+        jbtVolta.setContentAreaFilled(true); // tira o fundo branco
+        jbtVolta.setBorderPainted(false);     // tira a borda
+        jbtVolta.setOpaque(false);            // permite transparência
+        jbtVolta.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
+        jbtVolta.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtVolta.setBackground(new Color(20, 40, 60));
         
         if (imagemOriginal != null) {
             // Escala a imagem de acordo com a tela
@@ -124,6 +137,12 @@ public class TelaRegistrar extends javax.swing.JFrame {
         jtfEmail = new javax.swing.JTextField();
         jpfSenhaRegistro = new javax.swing.JPasswordField();
         jcbTipo = new javax.swing.JComboBox<>();
+        jlbNome = new javax.swing.JLabel();
+        jlbEmail = new javax.swing.JLabel();
+        jlbSenha = new javax.swing.JLabel();
+        jlbTipo = new javax.swing.JLabel();
+        jlbTitulo = new javax.swing.JLabel();
+        jbtVolta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,38 +160,83 @@ public class TelaRegistrar extends javax.swing.JFrame {
             }
         });
 
+        jlbNome.setText("Nome:");
+
+        jlbEmail.setText("Email:");
+
+        jlbSenha.setText("Senha:");
+
+        jlbTipo.setText("Função:");
+
+        jlbTitulo.setText("Registro de Usuário");
+
+        jbtVolta.setText("Voltar");
+        jbtVolta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtVoltaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpfSenhaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(160, 160, 160)
-                            .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(172, 172, 172)
-                            .addComponent(jtfNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jlbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpfSenhaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jlbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(1, 1, 1)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jlbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jlbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jlbSenha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jtfNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jcbTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jbtVolta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(375, Short.MAX_VALUE)
-                .addComponent(jtfNomeUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(297, Short.MAX_VALUE)
+                .addComponent(jlbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfNomeUsu)
+                    .addComponent(jlbNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jpfSenhaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfEmail)
+                    .addComponent(jlbEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpfSenhaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlbTipo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtVolta, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(99, 99, 99))
         );
 
         pack();
@@ -215,6 +279,10 @@ public class TelaRegistrar extends javax.swing.JFrame {
             new TelaErroAdd("Erro ao registrar: " + e.getMessage()).setVisible(true);
         }
     }//GEN-LAST:event_jbtSalvarActionPerformed
+
+    private void jbtVoltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtVoltaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtVoltaActionPerformed
 
     
 
@@ -259,7 +327,13 @@ public static String criptografarSenha(String senha) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtSalvar;
+    private javax.swing.JButton jbtVolta;
     private javax.swing.JComboBox<String> jcbTipo;
+    private javax.swing.JLabel jlbEmail;
+    private javax.swing.JLabel jlbNome;
+    private javax.swing.JLabel jlbSenha;
+    private javax.swing.JLabel jlbTipo;
+    private javax.swing.JLabel jlbTitulo;
     private javax.swing.JPasswordField jpfSenhaRegistro;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfNomeUsu;

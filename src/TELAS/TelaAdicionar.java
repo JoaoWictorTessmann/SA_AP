@@ -42,40 +42,60 @@ public class TelaAdicionar extends javax.swing.JFrame {
         initComponents();
         this.telaLista = telaLista;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(500, 550); // ou setExtendedState(MAXIMIZED_BOTH);
+        setSize(500, 600); // ou setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
         setTitle("Tela Adicionar Pedido");
+        jlbAddSer.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 24));
+        jlbAddSer.setForeground(Color.WHITE);
+        jlbNomCli.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbNomCli.setForeground(Color.WHITE);
+        jlbDesc.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbDesc.setForeground(Color.WHITE);
+        jlbModCarAdd.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbModCarAdd.setForeground(Color.WHITE);
+        jlbPlacaAdd.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbPlacaAdd.setForeground(Color.WHITE);
+        jlbValorAdd.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbValorAdd.setForeground(Color.WHITE);
+        jlbTempAdd.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
+        jlbTempAdd.setForeground(Color.WHITE);
 
         jtfAddNomeCliente.setOpaque(false);
         jtfAddNomeCliente.setBorder(new RoundedBorder(20));
-        jtfAddNomeCliente.setForeground(java.awt.Color.BLACK);
+        jtfAddNomeCliente.setBackground(Color.BLACK);
+        jtfAddNomeCliente.setForeground(java.awt.Color.WHITE);
         jtfAddNomeCliente.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddDescricao.setOpaque(false);
         jtfAddDescricao.setBorder(new RoundedBorder(20));
-        jtfAddDescricao.setForeground(java.awt.Color.BLACK);
+        jtfAddDescricao.setBackground(Color.BLACK);
+        jtfAddDescricao.setForeground(java.awt.Color.WHITE);
         jtfAddDescricao.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddModeloVei.setOpaque(false);
         jtfAddModeloVei.setBorder(new RoundedBorder(20));
-        jtfAddModeloVei.setForeground(java.awt.Color.BLACK);
+        jtfAddModeloVei.setBackground(Color.BLACK);
+        jtfAddModeloVei.setForeground(java.awt.Color.WHITE);
         jtfAddModeloVei.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddPlaca.setOpaque(false);
         jtfAddPlaca.setBorder(new RoundedBorder(20));
-        jtfAddPlaca.setForeground(java.awt.Color.BLACK);
+        jtfAddPlaca.setBackground(Color.BLACK);
+        jtfAddPlaca.setForeground(java.awt.Color.WHITE);
         jtfAddPlaca.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddValor.setOpaque(false);
         jtfAddValor.setBorder(new RoundedBorder(20));
-        jtfAddValor.setForeground(java.awt.Color.BLACK);
+        jtfAddValor.setBackground(Color.BLACK);
+        jtfAddValor.setForeground(java.awt.Color.WHITE);
         jtfAddValor.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jtfAddTempoEst.setOpaque(false);
         jtfAddTempoEst.setBorder(new RoundedBorder(20));
-        jtfAddTempoEst.setForeground(java.awt.Color.BLACK);
+        jtfAddTempoEst.setBackground(Color.BLACK);
+        jtfAddTempoEst.setForeground(java.awt.Color.WHITE);
         jtfAddTempoEst.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 14));
 
         jbtAdicionarPedido.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
@@ -84,6 +104,13 @@ public class TelaAdicionar extends javax.swing.JFrame {
         jbtAdicionarPedido.setForeground(java.awt.Color.WHITE);
         jbtAdicionarPedido.setOpaque(false);            // permite transparência
         jbtAdicionarPedido.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
+        
+        jbtVoltarAdd.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
+        jbtVoltarAdd.setContentAreaFilled(true); // tira o fundo branco
+        jbtVoltarAdd.setBorderPainted(false);     // tira a borda
+        jbtVoltarAdd.setForeground(java.awt.Color.WHITE);
+        jbtVoltarAdd.setOpaque(false);            // permite transparência
+        jbtVoltarAdd.setFont(new Font("SansSerif", Font.BOLD, 25)); // ou outro tamanho
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telaadicionar");
 
@@ -145,6 +172,14 @@ public class TelaAdicionar extends javax.swing.JFrame {
         jtfAddModeloVei = new javax.swing.JTextField();
         jtfAddDescricao = new javax.swing.JTextField();
         jtfAddNomeCliente = new javax.swing.JTextField();
+        jlbAddSer = new javax.swing.JLabel();
+        jlbNomCli = new javax.swing.JLabel();
+        jlbDesc = new javax.swing.JLabel();
+        jlbModCarAdd = new javax.swing.JLabel();
+        jlbPlacaAdd = new javax.swing.JLabel();
+        jlbValorAdd = new javax.swing.JLabel();
+        jlbTempAdd = new javax.swing.JLabel();
+        jbtVoltarAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,48 +202,93 @@ public class TelaAdicionar extends javax.swing.JFrame {
             }
         });
 
+        jlbAddSer.setText("Adicionar Serviço");
+
+        jlbNomCli.setText("Nome do Cliente:");
+
+        jlbDesc.setText("Descrição:");
+
+        jlbModCarAdd.setText("Modelo Do Carro:");
+
+        jlbPlacaAdd.setText("Placa:");
+
+        jlbValorAdd.setText("Valor:");
+
+        jlbTempAdd.setText("Tempo Estimado:");
+
+        jbtVoltarAdd.setText("Voltar");
+        jbtVoltarAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtVoltarAddActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtVoltarAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(77, 77, 77)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtfAddPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtfAddValor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(jtfAddTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(78, Short.MAX_VALUE))
+                        .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlbDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbNomCli, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbModCarAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlbPlacaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlbValorAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfAddValor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfAddTempoEst, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(jlbTempAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jtfAddPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(155, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jlbAddSer, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(162, 162, 162)
+                .addContainerGap(109, Short.MAX_VALUE)
+                .addComponent(jlbAddSer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbNomCli, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfAddNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
                 .addComponent(jtfAddDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbModCarAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfAddModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlbPlacaAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfAddPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfAddValor, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(jtfAddTempoEst))
+                    .addComponent(jlbValorAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbTempAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfAddValor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfAddTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtAdicionarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtVoltarAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -297,6 +377,10 @@ public class TelaAdicionar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfAddNomeClienteActionPerformed
 
+    private void jbtVoltarAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtVoltarAddActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtVoltarAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -334,6 +418,14 @@ public class TelaAdicionar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAdicionarPedido;
+    private javax.swing.JButton jbtVoltarAdd;
+    private javax.swing.JLabel jlbAddSer;
+    private javax.swing.JLabel jlbDesc;
+    private javax.swing.JLabel jlbModCarAdd;
+    private javax.swing.JLabel jlbNomCli;
+    private javax.swing.JLabel jlbPlacaAdd;
+    private javax.swing.JLabel jlbTempAdd;
+    private javax.swing.JLabel jlbValorAdd;
     private javax.swing.JTextField jtfAddDescricao;
     private javax.swing.JTextField jtfAddModeloVei;
     private javax.swing.JTextField jtfAddNomeCliente;

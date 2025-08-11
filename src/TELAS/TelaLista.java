@@ -37,6 +37,7 @@ public class TelaLista extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
         setTitle("Tela Lista de Pedidos");
+        jlbPedidos.setFont(new Font("SansSerif", Font.BOLD, 40));
 
         jbtAdicionar.setContentAreaFilled(true); // tira o fundo branco
         jbtAdicionar.setBorderPainted(false);     // tira a borda
@@ -107,6 +108,7 @@ public class TelaLista extends javax.swing.JFrame {
         jbtModificar = new javax.swing.JButton();
         jbtCancelar = new javax.swing.JButton();
         jbtFinalizar = new javax.swing.JButton();
+        jlbPedidos = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,6 +181,8 @@ public class TelaLista extends javax.swing.JFrame {
             }
         });
 
+        jlbPedidos.setText("Pedidos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,13 +202,17 @@ public class TelaLista extends javax.swing.JFrame {
                         .addComponent(jbtFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1403, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlbPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(257, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(252, Short.MAX_VALUE)
+                .addContainerGap(205, Short.MAX_VALUE)
+                .addComponent(jlbPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -372,5 +380,6 @@ public class TelaLista extends javax.swing.JFrame {
     private javax.swing.JButton jbtFinalizar;
     private javax.swing.JButton jbtModificar;
     private javax.swing.JButton jbtSair;
+    private javax.swing.JLabel jlbPedidos;
     // End of variables declaration//GEN-END:variables
 }

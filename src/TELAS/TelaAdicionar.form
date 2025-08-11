@@ -24,53 +24,77 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jbtAdicionarPedido" min="-2" pref="361" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jtfAddPlaca" min="-2" pref="345" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jtfAddValor" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  <Component id="jtfAddTempoEst" min="-2" pref="156" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jbtVoltarAdd" alignment="1" max="32767" attributes="0"/>
+                  <Component id="jbtAdicionarPedido" alignment="0" min="-2" pref="361" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="jtfAddDescricao" min="-2" pref="345" max="-2" attributes="0"/>
+                      <Component id="jtfAddModeloVei" alignment="1" min="-2" pref="345" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jlbDesc" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                  <Component id="jtfAddNomeCliente" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
+                  <Component id="jlbNomCli" alignment="0" min="-2" pref="245" max="-2" attributes="0"/>
+                  <Component id="jlbModCarAdd" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                  <Component id="jlbPlacaAdd" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jlbValorAdd" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                          <Component id="jtfAddValor" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jtfAddModeloVei" alignment="1" min="-2" pref="345" max="-2" attributes="0"/>
-                              <Component id="jtfAddDescricao" alignment="1" min="-2" pref="345" max="-2" attributes="0"/>
-                              <Component id="jtfAddNomeCliente" alignment="1" min="-2" pref="345" max="-2" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jtfAddTempoEst" pref="156" max="32767" attributes="0"/>
+                          <Component id="jlbTempAdd" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="jtfAddPlaca" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <EmptySpace pref="155" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+              <Component id="jlbAddSer" min="-2" pref="207" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
+              <EmptySpace pref="109" max="32767" attributes="0"/>
+              <Component id="jlbAddSer" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jlbNomCli" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jtfAddNomeCliente" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jlbDesc" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="jtfAddDescricao" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jlbModCarAdd" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jtfAddModeloVei" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jlbPlacaAdd" min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jtfAddPlaca" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jtfAddValor" pref="36" max="32767" attributes="0"/>
-                  <Component id="jtfAddTempoEst" max="32767" attributes="0"/>
+                  <Component id="jlbValorAdd" max="32767" attributes="0"/>
+                  <Component id="jlbTempAdd" min="-2" pref="18" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jtfAddValor" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jtfAddTempoEst" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jbtAdicionarPedido" min="-2" pref="37" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jbtVoltarAdd" min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,6 +124,49 @@
     <Component class="javax.swing.JTextField" name="jtfAddNomeCliente">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfAddNomeClienteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbAddSer">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adicionar Servi&#xe7;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbNomCli">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome do Cliente:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbDesc">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbModCarAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Modelo Do Carro:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbPlacaAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Placa:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbValorAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jlbTempAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tempo Estimado:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbtVoltarAdd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voltar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtVoltarAddActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

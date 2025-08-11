@@ -47,6 +47,8 @@ public class TelaCancelar extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
         setTitle("Tela Cancelar Pedido");
+        jlbFinalCan.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 35));
+        jlbIdPedidoCan.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 25));
 
         jtfIdPedidoCancel.setOpaque(false);
         jtfIdPedidoCancel.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -60,6 +62,13 @@ public class TelaCancelar extends javax.swing.JFrame {
         jbtConfirmarCancelamento.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
         jbtConfirmarCancelamento.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtConfirmarCancelamento.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
+        
+        jbtVoltaCan.setContentAreaFilled(true); // tira o fundo branco
+        jbtVoltaCan.setBorderPainted(false);     // tira a borda
+        jbtVoltaCan.setOpaque(false);            // permite transparência
+        jbtVoltaCan.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
+        jbtVoltaCan.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtVoltaCan.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telacancelar");
 
@@ -117,6 +126,9 @@ public class TelaCancelar extends javax.swing.JFrame {
 
         jtfIdPedidoCancel = new javax.swing.JTextField();
         jbtConfirmarCancelamento = new javax.swing.JButton();
+        jbtVoltaCan = new javax.swing.JButton();
+        jlbIdPedidoCan = new javax.swing.JLabel();
+        jlbFinalCan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,27 +145,53 @@ public class TelaCancelar extends javax.swing.JFrame {
             }
         });
 
+        jbtVoltaCan.setText("Voltar");
+        jbtVoltaCan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtVoltaCanActionPerformed(evt);
+            }
+        });
+
+        jlbIdPedidoCan.setText("ID do Pedido");
+
+        jlbFinalCan.setText("Cancelar Serviço");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
-                .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbtVoltaCan, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jlbFinalCan, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(26, 26, 26))))
+                        .addGap(86, 86, 86))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jlbIdPedidoCan, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(150, 150, 150))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
+                .addComponent(jlbFinalCan, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jlbIdPedidoCan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jtfIdPedidoCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
+                .addGap(18, 18, 18)
                 .addComponent(jbtConfirmarCancelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jbtVoltaCan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
 
         pack();
@@ -221,6 +259,10 @@ public class TelaCancelar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbtConfirmarCancelamentoActionPerformed
 
+    private void jbtVoltaCanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtVoltaCanActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtVoltaCanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -258,6 +300,9 @@ public class TelaCancelar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtConfirmarCancelamento;
+    private javax.swing.JButton jbtVoltaCan;
+    private javax.swing.JLabel jlbFinalCan;
+    private javax.swing.JLabel jlbIdPedidoCan;
     private javax.swing.JTextField jtfIdPedidoCancel;
     // End of variables declaration//GEN-END:variables
 }

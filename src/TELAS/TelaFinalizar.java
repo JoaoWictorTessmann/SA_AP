@@ -47,6 +47,8 @@ public class TelaFinalizar extends javax.swing.JFrame {
         setLayout(null); // necessário para posicionamento manual
         setResizable(false);
         setTitle("Tela Finalizar Pedido");
+        jlbFinal.setFont(new Font("SansSerif", java.awt.Font.BOLD, 35));
+        jlbIdPedido.setFont(new Font("SansSerif", java.awt.Font.BOLD, 25));
 
         jtfIdPedidoFim.setOpaque(false);
         jtfIdPedidoFim.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -60,6 +62,13 @@ public class TelaFinalizar extends javax.swing.JFrame {
         jbtFinalizarServico.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
         jbtFinalizarServico.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
         jbtFinalizarServico.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
+        
+        jbtvoltar.setContentAreaFilled(true); // tira o fundo branco
+        jbtvoltar.setBorderPainted(false);     // tira a borda
+        jbtvoltar.setOpaque(false);            // permite transparência
+        jbtvoltar.setFont(new Font("SansSerif", Font.BOLD, 20)); // ou outro tamanho
+        jbtvoltar.setForeground(java.awt.Color.WHITE); // cor branca ou como a cor do fundo
+        jbtvoltar.setBackground(new Color(20, 40, 60)); // Azul escuro (RGB)
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telafinalizar");
 
@@ -118,6 +127,9 @@ public class TelaFinalizar extends javax.swing.JFrame {
 
         jbtFinalizarServico = new javax.swing.JButton();
         jtfIdPedidoFim = new javax.swing.JTextField();
+        jbtvoltar = new javax.swing.JButton();
+        jlbFinal = new javax.swing.JLabel();
+        jlbIdPedido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,28 +140,50 @@ public class TelaFinalizar extends javax.swing.JFrame {
             }
         });
 
+        jbtvoltar.setText("Voltar");
+        jbtvoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtvoltarActionPerformed(evt);
+            }
+        });
+
+        jlbFinal.setText("Finalizar Serviço");
+
+        jlbIdPedido.setText("ID do Pedido");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtvoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlbFinal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
+                        .addGap(17, 17, 17)
                         .addComponent(jtfIdPedidoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                        .addGap(65, 65, 65)
+                        .addComponent(jlbIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(288, Short.MAX_VALUE)
+                .addContainerGap(162, Short.MAX_VALUE)
+                .addComponent(jlbFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jlbIdPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(jtfIdPedidoFim, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(jbtFinalizarServico, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtvoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73))
         );
 
         pack();
@@ -212,6 +246,10 @@ public class TelaFinalizar extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbtFinalizarServicoActionPerformed
 
+    private void jbtvoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtvoltarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtvoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -249,6 +287,9 @@ public class TelaFinalizar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtFinalizarServico;
+    private javax.swing.JButton jbtvoltar;
+    private javax.swing.JLabel jlbFinal;
+    private javax.swing.JLabel jlbIdPedido;
     private javax.swing.JTextField jtfIdPedidoFim;
     // End of variables declaration//GEN-END:variables
 }

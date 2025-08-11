@@ -49,6 +49,20 @@ public class TelaModificar extends javax.swing.JFrame {
         setSize(500, 600); // ou setExtendedState(MAXIMIZED_BOTH);
         setLocationRelativeTo(null);//Centralizar na tela
         setLayout(null); // necessário para posicionamento manual
+        jlbModif.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 30));
+        jlbModif.setForeground(Color.WHITE);
+        jlbClient.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 20));
+        jlbClient.setForeground(Color.WHITE);
+        jlbDesc.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 20));
+        jlbDesc.setForeground(Color.WHITE);
+        jlbModCar.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 15));
+        jlbModCar.setForeground(Color.WHITE);
+        jlbPlac.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 20));
+        jlbPlac.setForeground(Color.WHITE);
+        jlbValor.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 20));
+        jlbValor.setForeground(Color.WHITE);
+        jlbTempo.setFont(new java.awt.Font("SansSerif", java.awt.Font.BOLD, 20));
+        jlbTempo.setForeground(Color.WHITE);
         
         jtfModSolicitarID.setOpaque(false);
         jtfModSolicitarID.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -112,6 +126,13 @@ public class TelaModificar extends javax.swing.JFrame {
         jbtModificarPedido.setForeground(java.awt.Color.WHITE);
         jbtModificarPedido.setFont(new Font("SansSerif", Font.BOLD, 30)); // ou outro tamanho
         jbtModificarPedido.setBackground(new Color(10, 20, 40));
+        
+        jbtVoltarMod.setContentAreaFilled(true); // tira o fundo branco
+        jbtVoltarMod.setBorderPainted(false);     // tira a borda
+        jbtVoltarMod.setOpaque(false);            // permite transparência
+        jbtVoltarMod.setForeground(java.awt.Color.WHITE);
+        jbtVoltarMod.setFont(new Font("SansSerif", Font.BOLD, 30)); // ou outro tamanho
+        jbtVoltarMod.setBackground(new Color(10, 20, 40));
 
         ImageIcon imagemOriginal = DAO.ImagemTelas.getImagem("telamodificar");
 
@@ -207,6 +228,14 @@ public class TelaModificar extends javax.swing.JFrame {
         jtfModNomeCliente = new javax.swing.JTextField();
         jbtModConfirmarID = new javax.swing.JButton();
         jtfModSolicitarID = new javax.swing.JTextField();
+        jlbModif = new javax.swing.JLabel();
+        jlbClient = new javax.swing.JLabel();
+        jlbDesc = new javax.swing.JLabel();
+        jlbModCar = new javax.swing.JLabel();
+        jlbPlac = new javax.swing.JLabel();
+        jlbValor = new javax.swing.JLabel();
+        jlbTempo = new javax.swing.JLabel();
+        jbtVoltarMod = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -242,55 +271,109 @@ public class TelaModificar extends javax.swing.JFrame {
             }
         });
 
+        jlbModif.setText("Modificar Pedido");
+
+        jlbClient.setText("Cliente");
+
+        jlbDesc.setText("Descrição");
+
+        jlbModCar.setText("Modelo do Carro");
+
+        jlbPlac.setText("Placa");
+
+        jlbValor.setText("Valor");
+
+        jlbTempo.setText("Tempo Estimado");
+
+        jbtVoltarMod.setText("Voltar");
+        jbtVoltarMod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtVoltarModActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(72, Short.MAX_VALUE)
-                        .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfModValor)
-                            .addComponent(jtfModModeloVei, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
-                            .addComponent(jtfModSolicitarID)
-                            .addComponent(jtfModNomeCliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtfModPlaca)
-                                    .addComponent(jtfModTempoEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(9, 9, 9)))))
-                .addGap(183, 183, 183))
+                                .addGap(23, 23, 23)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlbClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jlbModCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtfModValor)
+                                            .addComponent(jtfModModeloVei)
+                                            .addComponent(jtfModSolicitarID)
+                                            .addComponent(jtfModNomeCliente)
+                                            .addComponent(jlbValor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jtfModDescricao, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jtfModPlaca)
+                                                .addComponent(jtfModTempoEst, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(9, 9, 9)))
+                                    .addComponent(jlbDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlbPlac, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlbTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlbModif, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtModificarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtVoltarMod, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(226, 226, 226))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(129, 129, 129)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(104, 104, 104)
+                .addComponent(jlbModif, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfModSolicitarID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtModConfirmarID, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(94, 94, 94)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlbClient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfModNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfModDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlbModCar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbPlac, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfModModeloVei, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfModPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jtfModValor, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(jtfModTempoEst))
-                .addGap(18, 18, 18)
+                    .addComponent(jlbValor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlbTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtfModValor)
+                    .addComponent(jtfModTempoEst, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtModificarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtVoltarMod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
 
         pack();
@@ -453,6 +536,10 @@ public class TelaModificar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfModNomeClienteActionPerformed
 
+    private void jbtVoltarModActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtVoltarModActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbtVoltarModActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -491,6 +578,14 @@ public class TelaModificar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtModConfirmarID;
     private javax.swing.JButton jbtModificarPedido;
+    private javax.swing.JButton jbtVoltarMod;
+    private javax.swing.JLabel jlbClient;
+    private javax.swing.JLabel jlbDesc;
+    private javax.swing.JLabel jlbModCar;
+    private javax.swing.JLabel jlbModif;
+    private javax.swing.JLabel jlbPlac;
+    private javax.swing.JLabel jlbTempo;
+    private javax.swing.JLabel jlbValor;
     private javax.swing.JTextField jtfModDescricao;
     private javax.swing.JTextField jtfModModeloVei;
     private javax.swing.JTextField jtfModNomeCliente;
